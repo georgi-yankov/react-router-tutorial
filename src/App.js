@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 export default function App() {
   return (
@@ -11,10 +11,16 @@ export default function App() {
           paddingBottom: "1rem"
         }}
       >
-        <Link to="/invoices">Invoices</Link> |{" "}
-        <Link to="/expenses">Expenses</Link>
+        <NavLink style={ setStyle } to="/invoices">Invoices</NavLink> |{" "}
+        <NavLink style={ setStyle } to="/expenses">Expenses</NavLink>
       </nav>
       <Outlet />
     </div>
   );
+}
+
+const setStyle = ({ isActive }) => {
+  return {
+    color: isActive && 'red'
+  }
 }
